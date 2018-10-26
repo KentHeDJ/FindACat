@@ -1,7 +1,8 @@
-package edu.gwu.findacat
+package edu.gwu.findacat.activity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import edu.gwu.findacat.R
 
 class PetActivity : AppCompatActivity() {
 
