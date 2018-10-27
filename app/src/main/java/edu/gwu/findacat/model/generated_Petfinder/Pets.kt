@@ -1,5 +1,8 @@
 package edu.gwu.trivia.model.generated.petfinder
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
-data class Pets(@Json(name = "pet") val pet: List<PetItem>)
+@Parcelize
+data class Pets(@Json(name = "pet") val pet: List<PetItem>): Parcelable

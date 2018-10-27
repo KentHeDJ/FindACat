@@ -10,7 +10,7 @@ import com.squareup.picasso.Picasso
 import edu.gwu.trivia.model.generated.petfinder.PetItem
 
 
-class PetsAdapter(private val petItem: List<PetItem>):
+class PetsAdapter(private val petItem: List<PetItem>, private val clickListener: OnItemClickListener):
         RecyclerView.Adapter<PetsAdapter.ViewHolder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(viewGroup?.context)
@@ -23,20 +23,28 @@ class PetsAdapter(private val petItem: List<PetItem>):
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        (viewHolder as ViewHolder).bind(petItem[position], clickListener)
         val photos = petItem.get(position)
 
-        viewHolder.bind(photos)
+        viewHolder.bind(photos, clickListener)
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val catImageView: ImageView = view.findViewById(R.id.cat_imageview)
         private val catTextView: TextView = view.findViewById(R.id.cat_textview)
 
-        fun bind(petItem: PetItem) {
+        fun bind(petItem: PetItem, listener: OnItemClickListener) = with(catImageView) {
             val url = petItem.media.photos.photo[0].t
             Picasso.get().load(url).into(catImageView)
 
             catTextView.text = petItem.name.t.toString()
+            setOnClickListener {
+                listener.onItemClick(petItem, it)
+            }
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(petItem: PetItem, catImageView: View)
     }
 }

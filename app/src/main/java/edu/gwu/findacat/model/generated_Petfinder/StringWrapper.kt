@@ -1,5 +1,8 @@
 package edu.gwu.trivia.model.generated.petfinder
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
-data class StringWrapper(@Json(name = "\$t") val t: String?)
+@Parcelize
+data class StringWrapper(@Json(name = "\$t") val t: String?): Parcelable
