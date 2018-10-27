@@ -25,6 +25,8 @@ class PetActivity : AppCompatActivity(), PetSearchManager.PetSearchCompletionLis
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pet)
 
+        //setSupportActionBar(menu_)
+
         petSearchManager = PetSearchManager()
         petSearchManager.petSearchCompletionListener = this
         petSearchManager.searchPets()
