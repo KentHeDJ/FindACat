@@ -20,6 +20,7 @@ class MenuActivity : AppCompatActivity(), CatFactFetcher.FactFetchedCompletionLi
 
         catFactFetcher = CatFactFetcher(this, textView = text_view)
         catFactFetcher.factFetchedCompletionListener = this
+        catFactFetcher.fetchFact()
 
 
         find_a_cat_button.setOnClickListener {
@@ -27,7 +28,6 @@ class MenuActivity : AppCompatActivity(), CatFactFetcher.FactFetchedCompletionLi
 
             loadCatData()
         }
-        catFactFetcher.fetchFact()
     }
 
     private fun loadCatData() {

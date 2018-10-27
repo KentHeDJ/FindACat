@@ -4,4 +4,5 @@
     <string name="find_a_cat_button_text">Find a Cat</string>
     <string name="favorite_cats_button_text">Favorite Cats</string>
     <string name="cat_fact">Cat fact:\n \"Cats have 9 lives\"</string>
+    <string name="usezip">UseZip</string>
 </resources>
