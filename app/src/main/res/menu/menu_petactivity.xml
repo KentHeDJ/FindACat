@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:icon="@android:drawable/ic_menu_help"
+        android:icon="@android:drawable/ic_menu_myplaces"
         android:title="@string/usezip"
-        android:onClick=""
+        android:onClick="useZipButtonPressed"
         app:showAsAction="ifRoom"/>
-
 
 </menu>

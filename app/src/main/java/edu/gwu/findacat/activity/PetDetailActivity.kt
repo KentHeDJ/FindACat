@@ -24,7 +24,8 @@ class PetDetailActivity : AppCompatActivity(), PetSearchManager.PetSearchComplet
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pet_detail)
 
-        //setSupportActionBar(pet_detail_toolbar)
+        setSupportActionBar(pet_detail_toolbar)
+        supportActionBar?.title = "Cat Details"
 
         petSearchManager = PetSearchManager()
         petSearchManager.petSearchCompletionListener = this

@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import edu.gwu.findacat.PetSearchManager
 import edu.gwu.findacat.PetsAdapter
@@ -25,12 +27,23 @@ class PetActivity : AppCompatActivity(), PetSearchManager.PetSearchCompletionLis
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pet)
 
-        //setSupportActionBar(menu_)
+        setSupportActionBar(pet_toolbar)
+        supportActionBar?.title = "Nearby Cats"
 
         petSearchManager = PetSearchManager()
         petSearchManager.petSearchCompletionListener = this
         petSearchManager.searchPets()
 
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_petactivity, menu)
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    fun useZipButtonPressed(item: MenuItem) {
 
     }
 

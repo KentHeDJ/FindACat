@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
 import edu.gwu.trivia.model.generated.petfinder.PetItem
+import kotlinx.android.synthetic.main.row_cat.view.*
 
 
 class PetsAdapter(private val petItem: List<PetItem>, private val clickListener: OnItemClickListener):
@@ -37,7 +38,7 @@ class PetsAdapter(private val petItem: List<PetItem>, private val clickListener:
             val url = petItem.media.photos.photo[0].t
             Picasso.get().load(url).into(catImageView)
 
-            catTextView.text = petItem.name.t.toString()
+            catTextView.text = "Name: " + petItem.name.t.toString()
             setOnClickListener {
                 listener.onItemClick(petItem, it)
             }
