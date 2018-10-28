@@ -10,4 +10,6 @@
     <string name="name">Name:</string>
     <string name="email">Email</string>
     <string name="favorite">Favorite</string>
+    <string name="permissions_granted">Location permission approved</string>
+    <string name="permissions_denied">We need your location to find the nearby cats</string>
 </resources>

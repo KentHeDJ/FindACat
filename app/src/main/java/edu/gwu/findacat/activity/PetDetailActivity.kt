@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.squareup.picasso.Picasso
+import edu.gwu.findacat.PersistenceManager
 import edu.gwu.findacat.PetSearchManager
 import edu.gwu.findacat.PetsAdapter
 import edu.gwu.findacat.R
@@ -19,6 +20,7 @@ class PetDetailActivity : AppCompatActivity(), PetSearchManager.PetSearchComplet
     private lateinit var petSearchManager: PetSearchManager
     private lateinit var petsAdapter: PetsAdapter
     private lateinit var petItem: PetItem
+    private lateinit var persistenceManager: PersistenceManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,8 @@ class PetDetailActivity : AppCompatActivity(), PetSearchManager.PetSearchComplet
 
         setSupportActionBar(pet_detail_toolbar)
         supportActionBar?.title = "Cat Details"
+
+        persistenceManager = PersistenceManager(this)
 
         petSearchManager = PetSearchManager()
         petSearchManager.petSearchCompletionListener = this
@@ -52,6 +56,10 @@ class PetDetailActivity : AppCompatActivity(), PetSearchManager.PetSearchComplet
         menuInflater.inflate(R.menu.menu_petdetailactivity, menu)
 
         return true
+    }
+
+    fun favoriteButtonPressed(item: MenuItem) {
+        persistenceManager.saveFavorites(petItem)
     }
 
     fun shareButtonPressed(item: MenuItem) {

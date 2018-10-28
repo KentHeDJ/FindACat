@@ -5,6 +5,7 @@
     <item
         android:icon="@android:drawable/ic_menu_add"
         android:title="@string/favorite"
+        android:onClick="favoriteButtonPressed"
         app:showAsAction="ifRoom"/>
 
     <item
