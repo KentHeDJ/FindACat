@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorLemonchiffon"
     tools:context=".activity.PetActivity">
 
     <android.support.v7.widget.Toolbar
@@ -14,11 +13,21 @@
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycle_view"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycle_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="android.support.v7.widget.GridLayoutManager"
+        app:spanCount="2"
+        >
+
     </android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
+
 
 </LinearLayout>

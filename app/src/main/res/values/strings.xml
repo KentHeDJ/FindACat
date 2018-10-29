@@ -12,4 +12,6 @@
     <string name="favorite">Favorite</string>
     <string name="permissions_granted">Location permission approved</string>
     <string name="permissions_denied">We need your location to find the nearby cats</string>
+    <string name="location_not_found">Location couldn\'t be found</string>
+    <string name="no_location_permission">No location permission</string>
 </resources>
