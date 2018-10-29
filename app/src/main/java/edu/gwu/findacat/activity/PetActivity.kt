@@ -21,6 +21,7 @@ import edu.gwu.trivia.model.generated.petfinder.PetItem
 import kotlinx.android.synthetic.main.activity_pet.*
 import android.location.Geocoder
 import android.support.v7.widget.GridLayoutManager
+import android.util.Log
 import org.jetbrains.anko.toast
 import java.util.*
 
@@ -96,7 +97,7 @@ class PetActivity : AppCompatActivity(), PetSearchManager.PetSearchCompletionLis
 
             setPositiveButton("OK") {
                 dialog, whichButton ->
-                //showMessage("display the game score or anything!")
+
                 var zipString = editTextZip!!.text.toString()
                 zipUsed = zipString.toInt()
 
@@ -110,7 +111,6 @@ class PetActivity : AppCompatActivity(), PetSearchManager.PetSearchCompletionLis
 
             setNegativeButton("NO") {
                 dialog, whichButton ->
-                //showMessage("Close the game or anything!")
                 dialog.dismiss()
             }
         }
@@ -152,7 +152,7 @@ class PetActivity : AppCompatActivity(), PetSearchManager.PetSearchCompletionLis
 
     override fun locationNotFound(reason: LocationDetector.FailureReason) {
         when (reason) {
-            LocationDetector.FailureReason.TIMEOUT -> toast(getString(R.string.location_not_found))
+            //LocationDetector.FailureReason.TIMEOUT -> toast(getString(R.string.location_not_found))
             LocationDetector.FailureReason.NO_PERMISSION -> toast(getString(R.string.no_location_permission))
         }
 
