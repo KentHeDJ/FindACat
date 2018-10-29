@@ -33,7 +33,7 @@ class PetDetailActivity : AppCompatActivity(), PetSearchManager.PetSearchComplet
 
         petSearchManager = PetSearchManager()
         petSearchManager.petSearchCompletionListener = this
-        petSearchManager.searchPets()
+        petSearchManager.searchPets(90120)
 
         petItem = intent.getParcelableExtra<PetItem>(PetActivity.CAT_DATA_KEY)
         val url = petItem.media.photos.photo[0].t

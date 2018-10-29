@@ -3,15 +3,20 @@ package edu.gwu.findacat.activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.content.ContextCompat.startActivity
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.text.InputType
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.EditText
 import edu.gwu.findacat.PersistenceManager
 import edu.gwu.findacat.PetSearchManager
 import edu.gwu.findacat.PetsAdapter
 import edu.gwu.findacat.R
+import edu.gwu.findacat.R.id.recycle_view
+import edu.gwu.findacat.R.string.name
 import edu.gwu.findacat.activity.PetActivity.Companion.CAT_DATA_KEY
 import edu.gwu.trivia.model.generated.petfinder.PetItem
 import kotlinx.android.synthetic.main.activity_pet.*
@@ -23,6 +28,7 @@ class PetActivity : AppCompatActivity(), PetSearchManager.PetSearchCompletionLis
     private lateinit var petsAdapter: PetsAdapter
     private lateinit var persistenceManager: PersistenceManager
     private var flag = 0
+    var zip = 90210
 
     companion object {
         val CAT_DATA_KEY = "catData"
@@ -45,10 +51,9 @@ class PetActivity : AppCompatActivity(), PetSearchManager.PetSearchCompletionLis
         }
         else {
 
-
             petSearchManager = PetSearchManager()
             petSearchManager.petSearchCompletionListener = this
-            petSearchManager.searchPets()
+            petSearchManager.searchPets(zip)
         }
 
 
@@ -62,12 +67,50 @@ class PetActivity : AppCompatActivity(), PetSearchManager.PetSearchCompletionLis
 
     fun useZipButtonPressed(item: MenuItem) {
 
+        val alert = AlertDialog.Builder(this)
+        var editTextZip: EditText?=null
+
+        // Builder
+        with (alert) {
+            setTitle("Zip Code")
+
+            setMessage("Enter your zip")
+
+            // Add any  input field here
+            editTextZip=EditText(context)
+            editTextZip!!.inputType = InputType.TYPE_CLASS_NUMBER
+
+            setPositiveButton("OK") {
+                dialog, whichButton ->
+                //showMessage("display the game score or anything!")
+                var zipString = editTextZip!!.text.toString()
+                zip = zipString.toInt()
+
+                petSearchManager = PetSearchManager()
+                petSearchManager.petSearchCompletionListener = this@PetActivity
+                petSearchManager.searchPets(zip)
+
+                dialog.dismiss()
+
+            }
+
+            setNegativeButton("NO") {
+                dialog, whichButton ->
+                //showMessage("Close the game or anything!")
+                dialog.dismiss()
+            }
+        }
+
+        // Dialog
+        val dialog = alert.create()
+        dialog.setView(editTextZip)
+        dialog.show()
+
+
+
     }
 
     override fun petsLoaded(petItems: List<PetItem>) {
-//        if (flag == 1) {
-//            petsAdapter = PetsAdapter(persistenceManager.fetchFavorites(), this)
-//        }
         petsAdapter = PetsAdapter(petItems, this)
         recycle_view.layoutManager = LinearLayoutManager(this)
         recycle_view.adapter = petsAdapter

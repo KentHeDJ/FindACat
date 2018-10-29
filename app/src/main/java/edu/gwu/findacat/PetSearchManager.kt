@@ -3,6 +3,7 @@ package edu.gwu.findacat
 import android.util.Log
 import com.squareup.moshi.*
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import edu.gwu.findacat.activity.PetActivity
 import edu.gwu.trivia.model.generated.petfinder.PetItem
 import edu.gwu.trivia.model.generated.petfinder.PetfinderResponse
 import retrofit2.Call
@@ -20,6 +21,7 @@ class PetSearchManager {
     private val TAG = "PetSearchManager"
     var petSearchCompletionListener: PetSearchCompletionListener? = null
 
+
     interface PetSearchCompletionListener {
         fun petsLoaded(petItems: List<PetItem>)
         fun petsNotLoaded()
@@ -30,7 +32,7 @@ class PetSearchManager {
         fun findPets(@Query("key") key: String, @Query("format") format: String, @Query("animal") animal: String, @Query("location") location: Int): Call<PetfinderResponse>
     }
 
-    fun searchPets() {
+    fun searchPets(zip: Int) {
         val moshi = Moshi.Builder()
                 .add(ObjectAsListJsonAdapterFactory())
                 .add(KotlinJsonAdapterFactory())
@@ -43,7 +45,8 @@ class PetSearchManager {
 
         val apiEndpoint = retrofit.create(ApiEndpointInterface::class.java)
 
-        apiEndpoint.findPets("632c5150ae894bbedc44aff41cf1110a", "json", "cat", 90210).enqueue(object: Callback<PetfinderResponse> {
+        //90210
+        apiEndpoint.findPets("632c5150ae894bbedc44aff41cf1110a", "json", "cat", zip).enqueue(object: Callback<PetfinderResponse> {
             override fun onFailure(call: Call<PetfinderResponse>, t: Throwable) {
                 Log.d(TAG, "API call failed!")
                 petSearchCompletionListener?.petsNotLoaded()
