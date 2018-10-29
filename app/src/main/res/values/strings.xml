@@ -6,7 +6,8 @@
     <string name="cat_fact">Cat fact:\n \"Cats have 9 lives\"</string>
     <string name="usezip">UseZip</string>
     <string name="share">Share</string>
-    <string name="share_message">Check out this cat name %s and email %s for more info.</string>
+    <string name="share_message">Check out this cat name: %s , email: %s and photo url: %s for more info.</string>
+    <string name="sent_email">Sent email to cat contact email</string>
     <string name="name">Name:</string>
     <string name="email">Email</string>
     <string name="favorite">Favorite</string>

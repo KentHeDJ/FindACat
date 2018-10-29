@@ -11,6 +11,7 @@
     <item
         android:icon="@android:drawable/ic_menu_send"
         android:title="@string/email"
+        android:onClick="emailButtonPressed"
         app:showAsAction="ifRoom"/>
 
     <item

@@ -97,7 +97,7 @@ class MenuActivity : AppCompatActivity(), CatFactFetcher.FactFetchedCompletionLi
     }
 
     override fun factFetched(fact: String?) {
-        text_view.text = fact
+        text_view.text = "Cat Fact:\n ${fact}"
     }
 
     override fun factNotFetched() {

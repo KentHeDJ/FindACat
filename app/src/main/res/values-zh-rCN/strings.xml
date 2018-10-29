@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">找猫</string>
+    <string name="find_a_cat">找一只猫</string>
+    <string name="find_a_cat_button_text">找一只猫</string>
+    <string name="favorite_cats_button_text">喜欢的猫</string>
+    <string name="cat_fact">猫的小知识</string>
+    <string name="usezip">使用邮编</string>
+    <string name="share">分享</string>
+    <string name="share_message">分享信息</string>
+    <string name="sent_email">发送邮件</string>
+    <string name="name">名字</string>
+    <string name="email">邮箱</string>
+    <string name="favorite">喜欢</string>
+    <string name="permissions_granted">获取位置许可</string>
+    <string name="permissions_denied">拒绝获取位置</string>
+    <string name="location_not_found">找不到位置</string>
+    <string name="no_location_permission">没有位置许可</string>
+</resources>
